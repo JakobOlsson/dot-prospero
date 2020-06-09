@@ -1,0 +1,83 @@
+{
+  "workbench.startupEditor": "none",
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "workbench.enableExperiments": false,
+  "update.mode": "none",
+  "update.showReleaseNotes": false,
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "extensions.autoCheckUpdates": false,
+  "extensions.autoUpdate": false,
+  "extensions.showRecommendationsOnlyOnDemand": true,
+  "workbench.settings.enableNaturalLanguageSearch": false,
+  "npm.fetchOnlinePackageInfo": false,
+  "terminal.integrated.automationShell.linux": "",
+
+  "terminal.integrated.shell.linux": "zsh",
+  // following is for flatpak version of vscode
+  // "terminal.integrated.shell.linux": "/usr/bin/env",
+  // "terminal.integrated.shellArgs.linux": [
+  //     "--",
+  //     "flatpak-spawn",
+  //     "--host",
+  //     "bash"
+  // ],
+  "editor.tabSize": 4,
+  "editor.insertSpaces": true,
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "d"],
+      "after": ["d", "d"]
+    },
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+    },
+    {
+      "before": ["<leader>", "<space>"],
+      "commands": [":nohl"]
+    }
+  ],
+  "vim.leader": ",",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+"editor.selectionHighlight": false,
+"editor.occurrencesHighlight": false,
+"workbench.colorTheme": "Gruvbox Dark (Medium)",
+// When enabled, commits will automatically be fetched from the default remote of the current Git repository.
+"git.autofetch": false,
+
+// Duration in seconds between each automatic git fetch, when `git.autofetch` is enabled.
+"git.autofetchPeriod": 180,
+
+// Whether auto refreshing is enabled.
+"git.autorefresh": false,
+
+// Configures when repositories should be automatically detected.
+//  - true: Scan for both subfolders of the current opened folder and parent folders of open files.
+//  - false: Disable automatic repository scanning.
+//  - subFolders: Scan for subfolders of the currently opened folder.
+//  - openEditors: Scan for parent folders of open files.
+"git.autoRepositoryDetection": true,
+
+// Stash any changes before pulling and restore them after successful pull.
+"git.autoStash": true,
+"editor.fontFamily": "'Inconsolata Mono','Inconsolata Nerd Font Mono','Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+"editor.fontWeight": "bold",
+"terminal.integrated.fontWeight": "bold",
+"terminal.integrated.drawBoldTextInBrightColors": true,
+"git.confirmSync": false
+}

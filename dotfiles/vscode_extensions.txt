@@ -1,0 +1,5 @@
+champgm.cloudformation-yaml-validator
+ms-vscode-remote.remote-ssh
+ms-vscode-remote.remote-ssh-edit
+tomphilbin.gruvbox-themes
+vscodevim.vim
