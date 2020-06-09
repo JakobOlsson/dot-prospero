@@ -58,6 +58,8 @@ if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
   set t_Co=16
 endif
 
+" Exit insertmode without escape
+imap jj <ESC>
 " VIM WINDOW MANAGMENT
 " EASIER MOVING BETWEEN WINDOW
 " instead of using CTR+W h,j,k and l
