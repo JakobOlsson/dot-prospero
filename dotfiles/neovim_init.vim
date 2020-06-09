@@ -20,6 +20,7 @@ Plug 'w0rp/ale'
 call plug#end()
 filetype plugin indent on
 colorscheme gruvbox
+set bg=dark
 " CHANGE LEADER KEY FROM DEFAUKT \ backslash
 let mapleader="," 
 " true colors
