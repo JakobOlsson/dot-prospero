@@ -22,7 +22,7 @@ filetype plugin indent on
 colorscheme gruvbox
 set bg=dark
 " CHANGE LEADER KEY FROM DEFAUKT \ backslash
-let mapleader="," 
+let mapleader=","
 " true colors
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
@@ -117,10 +117,10 @@ nnoremap <Leader>p :bprev<CR>
 " Exit to normal mode with ESC ESC, when in terminal :term
 tnoremap <ESC><ESC> <C-\><C-N>
 
-tnoremap <A-h> <C-\><C-N><C-w>h 
-tnoremap <A-j> <C-\><C-N><C-w>j 
-tnoremap <A-k> <C-\><C-N><C-w>k 
-tnoremap <A-l> <C-\><C-N><C-w>l 
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
 " command mode map movement keys to not depend on arrow keys
 cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
@@ -259,3 +259,7 @@ function! s:denite_my_settings() abort
   nnoremap <silent><buffer><expr> <C-h>
   \ denite#do_map('do_action', 'split')
 endfunction
+
+" Highlight trailing whitespaces as RED
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
