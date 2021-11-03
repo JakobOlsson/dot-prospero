@@ -1,29 +1,133 @@
 {
-  "workbench.startupEditor": "none",
-  "telemetry.enableCrashReporter": false,
-  "telemetry.enableTelemetry": false,
+  // * * * STARTUP BEHAVIOUR
+  // newUntitledFile: Open a new untitled file
+  // (only applies when opening an empty workspace).
+  // other option: none
+  "workbench.startupEditor": "newUntitledFile",
+   // * * * THEME
+  "workbench.colorTheme": "Gruvbox Dark (Medium)",
+  // * * * DISABLE TELEMETRY
+  // "telemetry.enableCrashReporter": false,
+  // "telemetry.enableTelemetry": false,
+  "telemetry.telemetryLevel": "off",
+  // Fetches experiments to run from a Microsoft online
+  // service.
   "workbench.enableExperiments": false,
   "update.mode": "none",
   "update.showReleaseNotes": false,
   "typescript.disableAutomaticTypeAcquisition": true,
   "extensions.autoCheckUpdates": false,
   "extensions.autoUpdate": false,
-  "extensions.showRecommendationsOnlyOnDemand": true,
+  "extensions.ignoreRecommendations": true,
+  // "extensions.showRecommendationsOnlyOnDemand": true,
   "workbench.settings.enableNaturalLanguageSearch": false,
   "npm.fetchOnlinePackageInfo": false,
-  "terminal.integrated.automationShell.linux": "",
-
-  "terminal.integrated.shell.linux": "zsh",
-  // following is for flatpak version of vscode
-  // "terminal.integrated.shell.linux": "/usr/bin/env",
-  // "terminal.integrated.shellArgs.linux": [
-  //     "--",
-  //     "flatpak-spawn",
-  //     "--host",
-  //     "bash"
-  // ],
+ 
+  // * * * * * * * * * * * * * * * * * * * * * * *
+  // * * * TERMINALS * * * * * * * * * * * * * * *
+  // * * * * * * * * * * * * * * * * * * * * * * *
+  "terminal.integrated.fontFamily": "Inconsolata Nerd Font",
+  "terminal.integrated.fontWeight": "normal",
+  "terminal.integrated.drawBoldTextInBrightColors": true,
+ 
+  // Whether or not to allow chord keybindings in the terminal.
+  // Note that when this is true and the keystroke results in a chord it
+  // will bypass `terminal.integrated.commandsToSkipShell`,
+  // setting this to false is particularly useful when you want
+  //  ctrl+k to go to your shell (not VS Code).
+  "terminal.integrated.allowChords": false,
+  "terminal.integrated.commandsToSkipShell": [
+  // CTRL+SHIFT+P will trigger vscode
+  "workbench.action.showCommands",
+  // CTRL++P will go to terminal
+  // for bash/zsh history
+  "-workbench.action.quickOpen",
+  // disable CTRL+F (find in terminal)
+  "-workbench.action.terminal.focusFind",
+  ],
+  // PROFILES is the new way of configure terminals
+  "terminal.integrated.profiles.windows": {
+    "bash": {
+      "path": "C:\\Users\\USERNAME\\AppData\\Local\\Programs\\Git\\bin\\bash.exe",
+      "args": ["--login"]
+    },
+    "PowerShell -NoProfile": {
+      "source": "PowerShell",
+      "args": ["-NoProfile"]
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "bash",
+ 
+  //  EXCLUDE FILES FROM CTRL+P, watchfolder, etc
+  "files.exclude": {
+    "**/.venv/*/**": true
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true,
+    "**/.venv/*/**": true
+  },
+  // * * * * * * * * * * * * * * * * * * * * * * *
+  // * * * GIT CONFIG * * * * * * * * * * * * * * *
+  // * * * * * * * * * * * * * * * * * * * * * * *
+  // OS Dependent (WINDOWS)
+  "git.path": "C:\\Users\\USERNAME\\AppData\\Local\\Programs\\Git\\bin\\git.exe",
+  // When enabled, commits will automatically be fetched from the default remote of the current Git repository.
+  "git.autofetch": false,
+ 
+  // Duration in seconds between each automatic git fetch, when `git.autofetch` is enabled.
+  "git.autofetchPeriod": 180,
+ 
+  // Whether auto refreshing is enabled.
+  "git.autorefresh": false,
+ 
+  // Configures when repositories should be automatically detected.
+  //  - true: Scan for both subfolders of the current opened folder and parent folders of open files.
+  //  - false: Disable automatic repository scanning.
+  //  - subFolders: Scan for subfolders of the currently opened folder.
+  //  - openEditors: Scan for parent folders of open files.
+  "git.autoRepositoryDetection": true,
+ 
+  // Stash any changes before pulling and restore them after successful pull.
+  "git.autoStash": true,
+  "git.confirmSync": false,
+ 
+  // * * * * * * * * * * * * * * * * * * * * * * *
+ // * * * EDITOR CONFIG * * * * * * * * * * * * *
+  // * * * * * * * * * * * * * * * * * * * * * * *
   "editor.tabSize": 4,
   "editor.insertSpaces": true,
+  "editor.selectionHighlight": false,
+  "editor.occurrencesHighlight": false,
+  "editor.fontFamily": "'Source Code Pro','Inconsolata Nerd Font Mono', 'Inconsolata Nerd Font','Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 11,
+  "editor.fontWeight": "bold",
+  "editor.rename.enablePreview": false,
+ 
+  // * * * * * * * * * * * * * * * * * * * * * * *
+  // * * * E X T E N S I O N S  C O N F I G S * * *
+  // * * * * * * * * * * * * * * * * * * * * * * *
+  // * REMOTE EXTENSION
+  "remote.SSH.remotePlatform": {
+    "thehostname": "linux",
+  },
+ 
+ 
+  // enable extensions in untrusted mode
+  "extensions.supportUntrustedWorkspaces": {
+    "vscodevim.vim": {
+      "supported": true,
+      "version": "1.17.1"
+    },
+    "ms-vscode-remote.remote-ssh": {
+ 
+      "supported": true,
+      "version": "0.51.0"
+    }
+  },
+  // * VIM EXTENSION
   "vim.easymotion": true,
   "vim.incsearch": true,
   "vim.useSystemClipboard": true,
@@ -52,32 +156,57 @@
   "vim.leader": ",",
   "vim.handleKeys": {
     "<C-a>": false,
-    "<C-f>": false
+    "<C-f>": true
   },
-"editor.selectionHighlight": false,
-"editor.occurrencesHighlight": false,
-"workbench.colorTheme": "Gruvbox Dark (Medium)",
-// When enabled, commits will automatically be fetched from the default remote of the current Git repository.
-"git.autofetch": false,
+ 
+  // * AWS EXTENSION
+  "aws.samcli.location": "",
+  "aws.telemetry": false,
+  "aws.cdk.explorer.enabled": false,
+ 
+  // * REDHAT YAML EXTENSION
+  // Custom tags for the parser to use/accept
+  "yaml.customTags": [
+      "!And",
+      "!If",
+      "!If sequence",
+      "!Not",
+      "!Equals",
+      "!Or",
+      "!FindInMap sequence",
+      "!Base64",
+      "!Cidr",
+      "!Ref",
+      "!Sub",
+      "!Sub sequence",
+      "!GetAtt",
+      "!GetAZs",
+      "!ImportValue",
+      "!Select",
+      "!Select sequence",
+      "!Split",
+      "!Join sequence"
+  ],
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "window.zoomLevel": 2,
 
-// Duration in seconds between each automatic git fetch, when `git.autofetch` is enabled.
-"git.autofetchPeriod": 180,
-
-// Whether auto refreshing is enabled.
-"git.autorefresh": false,
-
-// Configures when repositories should be automatically detected.
-//  - true: Scan for both subfolders of the current opened folder and parent folders of open files.
-//  - false: Disable automatic repository scanning.
-//  - subFolders: Scan for subfolders of the currently opened folder.
-//  - openEditors: Scan for parent folders of open files.
-"git.autoRepositoryDetection": true,
-
-// Stash any changes before pulling and restore them after successful pull.
-"git.autoStash": true,
-"editor.fontFamily": "'Inconsolata Mono','Inconsolata Nerd Font Mono','Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-"editor.fontWeight": "bold",
-"terminal.integrated.fontWeight": "bold",
-"terminal.integrated.drawBoldTextInBrightColors": true,
-"git.confirmSync": false
+  // * Linux profiles when running VSCode Flatpak release
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.profiles.linux": {
+      "bash": {
+        "path": "/usr/bin/flatpak-spawn",
+        "args": ["--host", "--env=TERM=xterm-256color", "bash"]
+      },
+      "zsh": {
+        "path": "/usr/bin/flatpak-spawn",
+        "args": ["--host", "--env=TERM=xterm-256color", "zsh", "-l"]
+      }
+  },
+  "security.workspace.trust.enabled": false
 }
