@@ -15,7 +15,10 @@ Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 " transperently edit gpg encrypted files
 Plug 'jamessan/vim-gnupg'
 " syntax check
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
+" LSP Packages
+Plug 'wbthomason/packer.nvim'
+Plug 'neovim/nvim-lspconfig'
 " Initialize plugin system
 call plug#end()
 filetype plugin indent on
@@ -68,6 +71,20 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+" To use `ALT+{h,j,k,l}` to navigate windows from any mode (including terminal
+" mode: >
+ tnoremap <A-h> <C-\><C-N><C-w>h
+ tnoremap <A-j> <C-\><C-N><C-w>j
+ tnoremap <A-k> <C-\><C-N><C-w>k
+ tnoremap <A-l> <C-\><C-N><C-w>l
+ inoremap <A-h> <C-\><C-N><C-w>h
+ inoremap <A-j> <C-\><C-N><C-w>j
+ inoremap <A-k> <C-\><C-N><C-w>k
+ inoremap <A-l> <C-\><C-N><C-w>l
+ nnoremap <A-h> <C-w>h
+ nnoremap <A-j> <C-w>j
+ nnoremap <A-k> <C-w>k
+ nnoremap <A-l> <C-w>l
 " CHANGE SO SPLIT GOEST TO THE RIGHT NOT LEFT AND BELOW
 set splitbelow
 set splitright
@@ -260,6 +277,29 @@ function! s:denite_my_settings() abort
   \ denite#do_map('do_action', 'split')
 endfunction
 
+" Create a vsplit terminal
+command Vterm :vsplit term://zsh
 " Highlight trailing whitespaces as RED
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
+
+" LSP setup
+lua <<EOF
+require'lspconfig'.pylsp.setup{
+  pylsp = {
+      plugins = {
+        pycodestyle = {
+          maxLineLength = 120
+        },
+        flake8 = {
+          enabled = true,
+          maxLineLength = 120
+        }
+      }
+    }
+}
+EOF
+" Autoformat on write
+lua <<EOF
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+EOF
