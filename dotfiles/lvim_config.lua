@@ -22,6 +22,7 @@ lvim.leader = "space"
 -- Lazygit in own Terminal window
 local Terminal = require('toggleterm.terminal').Terminal
 local Lazygit  = Terminal:new({
+  count = 12, -- make sure we dont overtake the normal terminal on 1
   direction = "float",
   float_opts = {
     border = "double",
@@ -47,7 +48,7 @@ lvim.keys.normal_mode[",n"] = ":bnext<CR>"
 lvim.keys.normal_mode[",p"] = ":bprevious<CR>"
 
 -- Terminal mode
-lvim.keys.term_mode["<C-n>"] = "<C-\\><C-n>"
+-- lvim.keys.term_mode["<C-n>"] = "<C-\\><C-n>"
 
 -- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
@@ -203,8 +204,7 @@ lvim.plugins = {
   { "easymotion/vim-easymotion" },
   { "ntpeters/vim-better-whitespace" },
   { "ellisonleao/gruvbox.nvim" },
-  { "folke/zen-mode.nvim" },
-  { "folke/twilight.nvim" }
+  { "folke/zen-mode.nvim" }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
