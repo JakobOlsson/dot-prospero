@@ -11,7 +11,7 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "onedarker"
+lvim.colorschema = "catppuccin-frappe"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
@@ -20,22 +20,8 @@ lvim.leader = "space"
 -- add your own keymapping
 
 -- Lazygit in own Terminal window
-local Terminal = require('toggleterm.terminal').Terminal
-local Lazygit  = Terminal:new({
-  count = 12, -- make sure we dont overtake the normal terminal on 1
-  direction = "float",
-  float_opts = {
-    border = "double",
-  },
-  cmd = "lazygit",
-  hidden = true
-})
-
-function Lazygit_toggle()
-  Lazygit:toggle()
-end
-
-lvim.keys.normal_mode["<leader>G"] = "<cmd>lua Lazygit_toggle()<CR>"
+lvim.builtin.terminal.active = true
+lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "lazygit", "<leader>G", "LazyGit" }
 
 -- Diff before save buffer
 lvim.keys.normal_mode["<leader>a"] = ":w !git diff --no-index % -<CR>"
@@ -204,7 +190,9 @@ lvim.plugins = {
   { "easymotion/vim-easymotion" },
   { "ntpeters/vim-better-whitespace" },
   { "ellisonleao/gruvbox.nvim" },
-  { "folke/zen-mode.nvim" }
+  { "folke/zen-mode.nvim" },
+  { "https://gitlab.com/yorickpeterse/vim-paper" },
+  { "catppuccin/nvim" }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
